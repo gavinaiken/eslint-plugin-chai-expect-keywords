@@ -14,9 +14,9 @@ npm install eslint-plugin-chai-expect-keywords
 
 # Options
 
-- 'allowKeywords' adds an array of additional keywords to the allowed list
-- 'allowSinonChai' includes [sinon-chai](http://chaijs.com/plugins/sinon-chai/) keywords in the allowed list
-- 'allowChaiAsPromised' includes [chai-as-promised](https://github.com/domenic/chai-as-promised) keywords in the allowed list
+- `allowKeywords` adds an array of additional keywords to the allowed list
+- `allowSinonChai` includes [sinon-chai](http://chaijs.com/plugins/sinon-chai/) keywords in the allowed list
+- `allowChaiAsPromised` includes [chai-as-promised](https://github.com/domenic/chai-as-promised) keywords in the allowed list
 
 # Configuration
 
