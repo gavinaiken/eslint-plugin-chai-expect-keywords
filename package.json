@@ -1,0 +1,35 @@
+{
+  "name": "eslint-plugin-chai-expect-keywords",
+  "version": "1.0.0",
+  "author": "Gavin Aiken <gavin@aiken.org.uk>",
+  "description": "ESLint plugin that checks for chai.js expect() assertions using non-existent keywords",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./",
+    "test": "npm run lint && npm run unit-test",
+    "unit-test": "mocha tests/**/*.js"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords"
+  },
+  "homepage": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords",
+  "bugs": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords/issues",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "mocha": "^3.0.2"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "chai"
+  ],
+  "license": "MIT"
+}
