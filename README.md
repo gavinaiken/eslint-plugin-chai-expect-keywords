@@ -1,6 +1,6 @@
 # eslint-plugin-chai-expect-keywords
 
-ESLint plugin that checks for unsupported keywords in chai.js expect() assertions. Cahi allows you to chain words to make readable assertions, but unfortunately you can include keywords that chai knows nothing about and it will not fail the test. This eslint plugin helps you catch any such unsupported chains.
+ESLint plugin that checks for unsupported keywords in chai.js expect() assertions. Chai allows you to chain words to make readable assertions, but unfortunately you can include keywords that chai knows nothing about and it will not fail the test. This eslint plugin helps you catch any such unsupported chains.
 
 # Installation
 
