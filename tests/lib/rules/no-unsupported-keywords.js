@@ -125,4 +125,3 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
     }]
   }]
 });
-
