@@ -71,7 +71,7 @@ avoid the steps of adding to `plugins` and `rules` and just add:
 
 ```json
 {
-  "extends": ["chai-expect-keywords/all"]
+  "extends": ["plugin:chai-expect-keywords/all"]
 }
 ```
 
@@ -79,7 +79,7 @@ Or if you want the rule only with no booleans set, just add:
 
 ```json
 {
-  "extends": ["chai-expect-keywords/recommended"]
+  "extends": ["plugin:chai-expect-keywords/recommended"]
 }
 ```
 
