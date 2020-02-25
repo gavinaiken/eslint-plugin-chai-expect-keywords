@@ -25,7 +25,7 @@
   "homepage": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords",
   "bugs": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords/issues",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.3.0"
   },
   "dependencies": {},
   "devDependencies": {
