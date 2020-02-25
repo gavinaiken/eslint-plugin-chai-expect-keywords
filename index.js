@@ -6,6 +6,14 @@ module.exports = {
       plugins: ['chai-expect-keywords'],
       rules: {
         'chai-expect-keywords/no-unsupported-keywords': [
+          'error'
+        ]
+      }
+    },
+    all: {
+      plugins: ['chai-expect-keywords'],
+      rules: {
+        'chai-expect-keywords/no-unsupported-keywords': [
           'error', {
             allowSinonChai: true,
             allowChaiAsPromised: true,
