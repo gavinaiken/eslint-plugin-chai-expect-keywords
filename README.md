@@ -24,6 +24,8 @@ npm install eslint-plugin-chai-expect-keywords
   keywords in the allowed list
 - `allowChaiAsPromised` includes [chai-as-promised](https://github.com/domenic/chai-as-promised)
   keywords in the allowed list
+- `allowChaiDOM` includes [chai-dom](https://github.com/nathanboktae/chai-dom)
+  keywords in the allowed list
 
 # Configuration
 
@@ -55,7 +57,8 @@ Or with options:
     "chai-expect-keywords/no-unsupported-keywords": [ "error", {
       "allowKeywords": ["length"],
       "allowSinonChai": true,
-      "allowChaiAsPromised": true
+      "allowChaiAsPromised": true,
+      "allowChaiDOM": true
     } ]
   }
 }

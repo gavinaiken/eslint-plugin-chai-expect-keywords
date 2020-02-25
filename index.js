@@ -8,7 +8,8 @@ module.exports = {
         'chai-expect-keywords/no-unsupported-keywords': [
           'error', {
             allowSinonChai: true,
-            allowChaiAsPromised: true
+            allowChaiAsPromised: true,
+            allowChaiDOM: true
           }
         ]
       }
