@@ -22,7 +22,7 @@
   "homepage": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords",
   "bugs": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords/issues",
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^6.8.0",
     "mocha": "^3.0.2"
   },
   "keywords": [
