@@ -1,9 +1,9 @@
 'use strict';
 
-var rule = require('../../../lib/rules/no-unsupported-keywords');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unsupported-keywords');
+const {RuleTester} = require('eslint');
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-unsupported-keywords', rule, {
   valid: [{
     code: `
