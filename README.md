@@ -23,7 +23,9 @@ npm install eslint-plugin-chai-expect-keywords
 - `allowSinonChai` includes [sinon-chai](http://chaijs.com/plugins/sinon-chai/)
   keywords in the allowed list
 - `allowChaiAsPromised` includes [chai-as-promised](https://github.com/domenic/chai-as-promised)
-  keywords in the allowed list
+  keywords in the allowed list. (You may also find [eslint-plugin-chai-as-promised](https://github.com/fintechstudios/eslint-plugin-chai-as-promised) of interest in ensuring
+  that `return` statements (or its `notify` method) are present as expected
+  by `chai-as-promised`.)
 - `allowChaiDOM` includes [chai-dom](https://github.com/nathanboktae/chai-dom)
   keywords in the allowed list
 

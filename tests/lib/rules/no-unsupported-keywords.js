@@ -7,13 +7,13 @@ var ruleTester = new RuleTester();
 ruleTester.run('no-unsupported-keywords', rule, {
   valid: [{
     code: `
-      it("works as expected", function() {
+      it("works with regular chai keywords", function() {
         expect(true).to.be.ok;
       });
       `
   }, {
     code: `
-      it("works as expected", function() {
+      it("works with regular chai keywords and line break", function() {
         expect(true)
         .to.be.ok;
       });
@@ -34,7 +34,7 @@ ruleTester.run('no-unsupported-keywords', rule, {
 
   invalid: [{
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with non-keyword as chained method", function() {
         expect(true).to.be.foo();
       });
     `,
@@ -43,7 +43,7 @@ ruleTester.run('no-unsupported-keywords', rule, {
     }]
   }, {
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with non-keyword as method", function() {
         expect(true).foo();
       });
     `,
@@ -52,7 +52,16 @@ ruleTester.run('no-unsupported-keywords', rule, {
     }]
   }, {
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with non-keyword as chained property", function() {
+        expect(true).to.be.foo;
+      });
+    `,
+    errors: [{
+      message: '"to.be.foo" contains unknown keyword "foo"'
+    }]
+  }, {
+    code: `
+      it("fails as expected with non-keyword as property", function() {
         expect(true).foo;
       });
     `,
@@ -61,7 +70,7 @@ ruleTester.run('no-unsupported-keywords', rule, {
     }]
   }, {
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with keyword in middle of method chain", function() {
         expect(true).to.not.zing.be.false();
       });
     `,
@@ -70,7 +79,7 @@ ruleTester.run('no-unsupported-keywords', rule, {
     }]
   }, {
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with keyword in middle of property chain", function() {
         expect(true).to.not.zing.be.false;
       });
     `,
@@ -84,7 +93,7 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
   valid: [{
     options: [{allowKeywords: ['zing', 'foo']}],
     code: `
-      it("works as expected", function() {
+      it("works as expected with \`allowKeywords\`", function() {
         expect(result).to.be.foo();
         expect(result).to.zing.be.ok;
       });
@@ -92,7 +101,7 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
   }, {
     options: [{allowSinonChai: true}],
     code: `
-      it("works as expected", function() {
+      it("works as expected with \`allowSinonChai\`", function() {
         expect(result).to.have.returned(foo);
         expect(result).to.have.been.called;
       });
@@ -100,14 +109,33 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
   }, {
     options: [{allowChaiAsPromised: true}],
     code: `
-      it("works as expected", function() {
+      it("works as expected with \`allowChaiAsPromised\`", function() {
         expect(result).to.eventually.be.ok;
+        expect(result).to.be.rejectedWith(foo);
       });
+    `
+  }, {
+    options: [{allowChaiAsPromised: true}],
+    code: `
+    it("works as expected with \`allowChaiAsPromised\` method in a return", function() {
+      return expect(
+        someMethod
+      ).to.be.rejectedWith(TypeError);
+    });
+    `
+  }, {
+    options: [{allowChaiAsPromised: true}],
+    code: `
+    it("works as expected with \`allowChaiAsPromised\` property in a return", function() {
+      return expect(
+        someMethod
+      ).to.eventually.be.ok;
+    });
     `
   }, {
     options: [{allowChaiDOM: true}],
     code: `
-    it("works as expected", function() {
+    it("works as expected with \`allowChaiDOM\`", function() {
       expect(result).to.have.text('abc');
       expect(result).not.be.displayed;
     });
@@ -117,7 +145,7 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
   invalid: [{
     options: [{allowKeywords:['zing', 'foo']}],
     code: `
-      it("fails as expected", function() {
+      it("fails as expected with keyword missing among \`allowKeywords\`", function() {
         expect(result).to.be.foo();
         expect(result).to.bar.be.ok;
       });
@@ -127,7 +155,7 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
     }]
   }, {
     code: `
-      it("works as expected", function() {
+      it("fails as expected when \`allowKeywords\` is missing", function() {
         expect(result).to.be.foo();
         expect(result).to.zing.be.ok;
       });
@@ -139,7 +167,7 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
     }]
   }, {
     code: `
-      it("works as expected", function() {
+      it("fails as expected when \`allowSinonChai\` is missing", function() {
         expect(result).to.have.returned(foo);
         expect(result).to.have.been.called;
       });
@@ -151,16 +179,41 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
     }]
   }, {
     code: `
-      it("works as expected", function() {
+      it("fails as expected when \`allowChaiAsPromised\` is missing", function() {
         expect(result).to.eventually.be.ok;
+        expect(result).to.be.rejectedWith(foo);
       });
+    `,
+    errors: [{
+      message: '"to.eventually.be.ok" contains unknown keyword "eventually"'
+    }, {
+      message: '"to.be.rejectedWith" contains unknown keyword "rejectedWith"'
+    }]
+  }, {
+    code: `
+    it("fails as expected in a return method when \`allowChaiAsPromised\` is missing", function() {
+      return expect(
+        someMethod
+      ).to.be.rejectedWith(TypeError);
+    });
+    `,
+    errors: [{
+      message: '"to.be.rejectedWith" contains unknown keyword "rejectedWith"'
+    }]
+  }, {
+    code: `
+    it("fails as expected in a return property when \`allowChaiAsPromised\` is missing", function() {
+      return expect(
+        someMethod
+      ).to.eventually.be.ok;
+    });
     `,
     errors: [{
       message: '"to.eventually.be.ok" contains unknown keyword "eventually"'
     }]
   }, {
     code: `
-    it("works as expected", function() {
+    it("fails as expected when \`allowChaiDOM\` is missing", function() {
       expect(result).to.have.text('abc');
       expect(result).not.be.displayed;
     });
