@@ -140,6 +140,14 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
       expect(result).not.be.displayed;
     });
     `
+  }, {
+    options: [{allowChaiExclude: true}],
+    code: `
+    it("works as expected with \`allowChaiExclude\`", function() {
+      expect(result).excluding('a');
+      expect(result).excludingEvery('a');
+    });
+    `
   }],
 
   invalid: [{
@@ -222,6 +230,18 @@ ruleTester.run('no-unsupported-keywords with options', rule, {
       message: '"to.have.text" contains unknown keyword "text"'
     }, {
       message: '"not.be.displayed" contains unknown keyword "displayed"'
+    }]
+  }, {
+    code: `
+    it("fails as expected when \`allowChaiExclude\` is missing", function() {
+      expect(result).excluding('a');
+      expect(result).excludingEvery('a');
+    });
+    `,
+    errors: [{
+      message: '"excluding" contains unknown keyword "excluding"'
+    }, {
+      message: '"excludingEvery" contains unknown keyword "excludingEvery"'
     }]
   }]
 });
