@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-chai-expect-keywords",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "author": "Gavin Aiken <gavin@aiken.org.uk>",
   "contributors": [
     "Brett Zamir"
@@ -25,12 +25,14 @@
   "homepage": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords",
   "bugs": "https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords/issues",
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=18.18.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "globals": "^15.2.0"
+  },
   "devDependencies": {
-    "eslint": "^7.19.0",
-    "mocha": "^8.2.1",
+    "eslint": "^9.2.0",
+    "mocha": "^10.0.0",
     "nyc": "^15.1.0"
   },
   "keywords": [

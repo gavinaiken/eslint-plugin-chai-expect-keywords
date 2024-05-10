@@ -5,3 +5,4 @@ node_modules
 test-results
 *results.xml
 package-lock.json
+.nyc_output

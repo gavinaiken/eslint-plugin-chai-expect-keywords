@@ -12,6 +12,18 @@ such unsupported chains.
 npm install eslint-plugin-chai-expect-keywords
 ```
 
+# Requirements
+
+For version 2.x:
+
+- Node.js 6 or above
+- ESLint 4.x - 8.x
+
+For version 3.x:
+
+- Node.js 18 or above
+- ESLint 9.x or above
+
 # Rules
 
 - `no-unsupported-keywords` - Prevent using unsupported keywords in the
