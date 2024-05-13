@@ -45,30 +45,31 @@ For version 3.x:
 
 # Configuration
 
+Import the plugin into your `eslint.config.js` file:
+
+```js
+import chaiExpectKeywords from 'eslint-plugin-chai-expect-keywords';
+```
+
 Add a `plugins` section and specify `chai-expect-keywords` as a plugin:
 
-```json
-{
-  "plugins": [
-    "chai-expect-keywords"
-  ]
-}
+```js
+  "plugins": {
+      "chai-expect-keywords": chaiExpectKeywords
+  },
 ```
 
 Enable the rule:
 
-```json
-{
+```js
   "rules": {
     "chai-expect-keywords/no-unsupported-keywords": "error"
   }
-}
 ```
 
 Or with options:
 
-```json
-{
+```js
   "rules": {
     "chai-expect-keywords/no-unsupported-keywords": [ "error", {
       "allowKeywords": ["length"],
@@ -78,24 +79,26 @@ Or with options:
       "allowChaiExclude": true
     } ]
   }
-}
 ```
 
-If you want the rule enabled with only its boolean options, you can
-avoid the steps of adding to `plugins` and `rules` and just add:
+If you want the rule enabled with all its boolean options set to true, you can
+avoid the steps of adding to `plugins` and `rules` and just include the all config in:
 
-```json
-{
-  "extends": ["plugin:chai-expect-keywords/all"]
-}
+```js
+import js from '@eslint/js';
+import chaiExpectKeywords from 'eslint-plugin-chai-expect-keywords';
+
+export default [
+    js.configs.recommended,
+    chaiExpectKeywords.configs.all,
+
 ```
 
-Or if you want the rule only with no booleans set, just add:
+Or if you want the rule only with no booleans set, use the "recommended" config:
 
-```json
-{
-  "extends": ["plugin:chai-expect-keywords/recommended"]
-}
+```js
+export default [
+    chaiExpectKeywords.configs.recommended,
 ```
 
 # License
