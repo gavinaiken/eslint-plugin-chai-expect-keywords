@@ -15,6 +15,7 @@ const plugin = {
 // assign configs here so we can reference `plugin`
 Object.assign(plugin.configs, {
   recommended: {
+    name: 'chai-expect-keywords/recommended',
     plugins: {
       'chai-expect-keywords': plugin
     },
@@ -25,6 +26,7 @@ Object.assign(plugin.configs, {
     }
   },
   all: {
+    name: 'chai-expect-keywords/all',
     plugins: {
       'chai-expect-keywords': plugin
     },
